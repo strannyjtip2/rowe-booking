@@ -44,15 +44,23 @@
   async function loadMe() { st.me = null; if (!localStorage.getItem(TK)) return; try { st.me = await call('GET', 'api/me'); } catch (e) {} }
   const primaryCar = () => st.me && (st.me.cars.find((c) => c.primary) || st.me.cars[0]);
   const fmtPhone = (p) => { const d = String(p || ''); return d.length === 11 && d[0] === '7' ? `+7 ${d.slice(1, 4)} ${d.slice(4, 7)}-${d.slice(7, 9)}-${d.slice(9)}` : '+' + d; };
+  const SV = (d) => `<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+  const IC = {
+    home: SV('<path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V20h5v-6h4v6h5V9.5"/>'),
+    user: SV('<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>'),
+    car: SV('<path d="M5 16V12l2-5h10l2 5v4"/><path d="M3 16h18v2H3z"/><circle cx="7.5" cy="18" r="1.5"/><circle cx="16.5" cy="18" r="1.5"/><path d="M5 12h14"/>'),
+    hist: SV('<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>'),
+    card: SV('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 10h18M7 15h4"/>'),
+  };
   function dock(cur) {
     const root = document.getElementById('dock') || (() => { const d = document.createElement('nav'); d.id = 'dock'; d.className = 'dock'; document.body.appendChild(d); return d; })();
     let items;
-    if (cur === 'login') items = [['book', '🏠', 'Домой'], ['login', '👤', 'Войти']];
-    else if (!st.me) items = [['book', '🏠', 'Домой'], ['login', '👤', 'Войти']];
+    if (cur === 'login') items = [['book', IC.home, 'Домой'], ['login', IC.user, 'Войти']];
+    else if (!st.me) items = [['book', IC.home, 'Домой'], ['login', IC.user, 'Войти']];
     else {
-      items = [['book', '🏠', 'Домой'], ['cars', '🚗', 'Авто'], ['history', '📋', 'История']];
-      if (st.me.loyalty) items.push(['bonus', '💳', 'Бонусы']);
-      items.push(['profile', '👤', 'Профиль']);
+      items = [['book', IC.home, 'Домой'], ['cars', IC.car, 'Авто'], ['history', IC.hist, 'История']];
+      if (st.me.loyalty) items.push(['bonus', IC.card, 'Бонусы']);
+      items.push(['profile', IC.user, 'Профиль']);
     }
     root.innerHTML = items.map(([k, ico, l]) => `<button type="button" class="${k === cur ? 'on' : ''}" data-nav="${k}"><span class="ico">${ico}</span><span>${l}</span></button>`).join('');
     root.querySelectorAll('[data-nav]').forEach((el) => el.onclick = () => go(el.dataset.nav));
