@@ -1,0 +1,128 @@
+{
+  "shop": {
+    "name": "ROWE — Замена масла",
+    "shortName": "ROWE",
+    "tagline": "Замена масла и жидкостей. Выберите услугу и удобное время.",
+    "phone": "+7 900 000-00-00",
+    "address": "Москва (адрес — пример)",
+    "currency": "₽"
+  },
+  "_note": "ЦЕНЫ И ДЛИТЕЛЬНОСТИ НИЖЕ — ПРИМЕРЫ, замените на свои. bays = число постов.",
+  "timezone": "Europe/Moscow",
+  "slotStepMin": 30,
+  "bays": 2,
+  "horizonDays": 14,
+  "minLeadHours": 1,
+  "closedDates": [],
+  "reminder": {
+    "months": 6,
+    "km": 10000
+  },
+  "hours": {
+    "0": {
+      "open": "09:00",
+      "close": "20:00"
+    },
+    "1": {
+      "open": "09:00",
+      "close": "20:00"
+    },
+    "2": {
+      "open": "09:00",
+      "close": "20:00"
+    },
+    "3": {
+      "open": "09:00",
+      "close": "20:00"
+    },
+    "4": {
+      "open": "09:00",
+      "close": "20:00"
+    },
+    "5": {
+      "open": "09:00",
+      "close": "20:00"
+    },
+    "6": {
+      "open": "09:00",
+      "close": "20:00"
+    }
+  },
+  "services": [
+    {
+      "id": "oil",
+      "name": "Замена моторного масла",
+      "desc": "Слив и заливка масла, проверка уровня.",
+      "price": 1000,
+      "durationMin": 30,
+      "mode": "hourly",
+      "reminder": true
+    },
+    {
+      "id": "oil-filter",
+      "name": "Масло + масляный фильтр",
+      "desc": "Замена масла и масляного фильтра.",
+      "price": 1500,
+      "durationMin": 45,
+      "mode": "hourly",
+      "reminder": true
+    },
+    {
+      "id": "to",
+      "name": "Полное ТО",
+      "desc": "Масло, фильтры: масляный, воздушный, салонный.",
+      "price": 3000,
+      "durationMin": 90,
+      "mode": "hourly",
+      "reminder": true
+    },
+    {
+      "id": "atf",
+      "name": "Замена масла в АКПП",
+      "desc": "Частичная/аппаратная замена ATF.",
+      "price": 4000,
+      "durationMin": 90,
+      "mode": "hourly"
+    },
+    {
+      "id": "mtf",
+      "name": "Замена масла в МКПП / редукторе",
+      "desc": "Трансмиссионное масло.",
+      "price": 2000,
+      "durationMin": 60,
+      "mode": "hourly"
+    },
+    {
+      "id": "coolant",
+      "name": "Замена антифриза",
+      "desc": "Слив, промывка по необходимости, заливка.",
+      "price": 2000,
+      "durationMin": 60,
+      "mode": "hourly"
+    }
+  ],
+  "loyalty": {
+    "enabled": true,
+    "_note": "УРОВНИ И ПРОЦЕНТЫ — ПРИМЕРЫ. from = сумма выполненных записей, ₽. percent = скидка/бонус, %.",
+    "cardPrefix": "7700",
+    "tiers": [
+      {
+        "id": "bronze",
+        "name": "Bronze",
+        "title": "Бронза",
+        "percent": 3,
+        "from": 0,
+        "color": "#cd7f32"
+      },
+      {
+        "id": "silver",
+        "name": "Silver",
+        "title": "Серебро",
+        "percent": 4,
+        "from": 15000,
+        "color": "#c0c0c0"
+      }
+    ]
+  },
+  "adminPin": "4242"
+}

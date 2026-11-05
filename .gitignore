@@ -1,0 +1,8 @@
+data/bookings.db
+data/bookings.db-*
+data/config.json
+node_modules/
+tools/node_modules/
+screenshots/
+logo-original.png
+.DS_Store
